@@ -1,0 +1,25 @@
+.inpText {
+    color: var(--secondary-text-light, rgba(27, 43, 65, 0.72));
+    font-family: Plus Jakarta Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    .inpStar {
+        color: red;
+    }
+}
+
+.antInp {
+    width: 336px;
+    height: 57px;
+    border-radius: 3px;
+    border: 1px solid var(--contrast-20-light, rgba(28, 55, 90, 0.16));
+    color: var(--body-text-light, rgba(24, 39, 58, 0.94));
+    font-family: Plus Jakarta Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+}
