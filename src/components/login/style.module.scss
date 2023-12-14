@@ -85,8 +85,13 @@
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+       
+       
     }
 
+    &_input:focus:required:invalid {
+        border:2px solid red
+        }
     .err {
         color: red;
 
@@ -158,7 +163,13 @@
     cursor: pointer;
     margin-top: 15px;
 
-    .loginBtn {
+    .loginBtn[disabled] {
+        background-color: #1676F3;
+        opacity: 50%;
+        
+    }
+    .loginBtn{
+        background-color: #1676F3;
         display: flex;
         width: 336px;
         height: 56px;
@@ -176,10 +187,15 @@
         font-weight: 600;
         line-height: normal;
     }
-
+   
 }
 
 .signupLink {
     margin-left: 5px;
     color: var(--primary-text-light, #1676F3);
 }
+
+input:focus:invalid {
+    border: 1px solid red;
+}
+

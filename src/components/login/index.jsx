@@ -3,16 +3,21 @@ import Logo from '../assets/img/Logo3.png'
 import google from '../assets/img/google4.svg'
 import style from './style.module.scss'
 import { useForm } from 'react-hook-form'
+import Password from 'antd/es/input/Password'
 
 export const Login = () => {
     const {
         register,
-        formState: { errors },
+        formState: { errors, isValid },
         handleSubmit,
+        reset
 
-    } = useForm()
+    } = useForm({
+        mode:"onBlur"
+    })
     const onSubmit = (data) => {
         alert(JSON.stringify(data));
+        reset();
     };
     return (
         <div>
@@ -39,8 +44,9 @@ export const Login = () => {
                         <input placeholder="Enter your email" className={style.inpEmail}
                             id="username"
                             type="text"
+                            required
                             {...register("firstname", {
-                                required: "You must fill the name",
+                                required: "You must fill email",
                                 minLength: {
                                     value: 5,
                                     message: "Minimum 5 characters"
@@ -61,8 +67,8 @@ export const Login = () => {
                             {...register("password", {
                                 required: true,
                                 minLength: {
-                                    value: 5,
-                                    message: "Your password must min 5 characters"
+                                    value: 8,
+                                    message: "Your password must min 8 characters"
                                 }
                             })}
                         >
@@ -82,7 +88,7 @@ export const Login = () => {
                     <span className={style.spanRemBox}>Forgot password?</span>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className={style.loginBox}>
-                    <button type='submit' className={style.loginBtn}>
+                    <button type='submit' disabled={!isValid} className={style.loginBtn}>
                         Log in
                     </button></form>
             </div>

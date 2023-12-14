@@ -20,7 +20,7 @@
     height: 56px;
     justify-content: center;
     align-items: center;
-    margin: 300px 25px;
+    margin: 320px 25px;
     gap: 16px;
 
 
@@ -108,13 +108,15 @@
         border-radius: 3px;
         border: 1px solid var(--contrast-20-light, rgba(28, 55, 90, 0.16));
     }
+    .err {
+        color: red;
 
-    // .eyeImg {
-    //   // position: relative;
-    //   // left: -37px;
-    //   // top: 8px;
-
-    // }
+        font-family: Plus Jakarta Sans;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
 }
 input:hover {
     outline-color: #1676F3;
