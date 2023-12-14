@@ -14,7 +14,7 @@ function App() {
       <Login />
       <div className={style.signupBox}>
         <span>Don’t have an account?</span>
-        <a className={style.signupLink} href='/sign-up'> Sign Up</a>
+        <Link className={style.signupLink} to={'/sign-up'}> Sign Up</Link>
       </div>
       <Routes>
         <Route path='/sign-up' element={<SignUp />} />

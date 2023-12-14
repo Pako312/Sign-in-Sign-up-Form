@@ -13,7 +13,7 @@ export const Login = () => {
         reset
 
     } = useForm({
-        mode:"onBlur"
+        mode: "onBlur"
     })
     const onSubmit = (data) => {
         alert(JSON.stringify(data));
@@ -45,8 +45,8 @@ export const Login = () => {
                             id="username"
                             type="text"
                             required
-                            {...register("firstname", {
-                                required: "You must fill email",
+                            {...register("email", {
+                                required: "You must fill your email",
                                 minLength: {
                                     value: 5,
                                     message: "Minimum 5 characters"
@@ -68,7 +68,7 @@ export const Login = () => {
                                 required: true,
                                 minLength: {
                                     value: 8,
-                                    message: "Your password must min 8 characters"
+                                    message: "Your password must be minimum 8 characters"
                                 }
                             })}
                         >
@@ -76,7 +76,7 @@ export const Login = () => {
 
                         </input>
                     </form>
-                    <div className={style.err}>{errors?.password  && <p>{errors?.password?.message || 'Error!'}</p>}</div>
+                    <div className={style.err}>{errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}</div>
                 </div>
                 <div className={style.rememberBox}>
                     <form className={style.formRemBox}>
