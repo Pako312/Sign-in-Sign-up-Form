@@ -85,16 +85,12 @@
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-       
-       
+
+
     }
 
-    &_input:focus:required:invalid {
-        border:2px solid red
-        }
     .err {
         color: red;
-
         font-family: Plus Jakarta Sans;
         font-size: 12px;
         font-style: normal;
@@ -104,6 +100,7 @@
 
     .inpEmail {
         color: var(--body-text-light, rgba(24, 39, 58, 0.94));
+        outline: none;
 
         /* Input field */
         font-family: Plus Jakarta Sans;
@@ -119,9 +116,20 @@
         flex-shrink: 0;
         border-radius: 3px;
         border: 1px solid var(--contrast-20-light, rgba(28, 55, 90, 0.16));
+       
     }
+   
 
 }
+
+input:focus:required:valid{
+    border: 1px solid blue;
+}
+
+input:focus:required:invalid {
+    border: 1px solid red;
+}
+
 
 .rememberBox {
     display: flex;
@@ -166,9 +174,10 @@
     .loginBtn[disabled] {
         background-color: #1676F3;
         opacity: 50%;
-        
+
     }
-    .loginBtn{
+
+    .loginBtn {
         background-color: #1676F3;
         display: flex;
         width: 336px;
@@ -187,7 +196,7 @@
         font-weight: 600;
         line-height: normal;
     }
-   
+
 }
 
 .signupLink {
@@ -195,7 +204,20 @@
     color: var(--primary-text-light, #1676F3);
 }
 
-input:focus:invalid {
-    border: 1px solid red;
+
+
+.signupBox {
+    display: flex;
+    justify-content: center;
+
 }
+
+.signupLink {
+
+    color: var(--primary-text-light, #1676F3);
+}
+
+// input:focus:required:invalid {
+//     border: 2px solid red;
+// }
 

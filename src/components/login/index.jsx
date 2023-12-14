@@ -4,6 +4,7 @@ import google from '../assets/img/google4.svg'
 import style from './style.module.scss'
 import { useForm } from 'react-hook-form'
 import Password from 'antd/es/input/Password'
+import { Link } from 'react-router-dom'
 
 export const Login = () => {
     const {
@@ -13,7 +14,7 @@ export const Login = () => {
         reset
 
     } = useForm({
-        mode: "onBlur"
+        mode: "onChange"
     })
     const onSubmit = (data) => {
         alert(JSON.stringify(data));
@@ -43,7 +44,7 @@ export const Login = () => {
                         <p className={style.inpText}>Email Address</p>
                         <input placeholder="Enter your email" className={style.inpEmail}
                             id="username"
-                            type="text"
+                            type="email"
                             required
                             {...register("email", {
                                 required: "You must fill your email",
@@ -56,7 +57,7 @@ export const Login = () => {
                             })}
                         />
                     </form>
-                    <div className={style.err}>{errors?.firstname && <p>{errors?.firstname?.message || 'Error!'}</p>}</div>
+                    <div className={style.err}>{errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}</div>
                 </div>
                 <div className={style.emailBox}>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -90,7 +91,14 @@ export const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className={style.loginBox}>
                     <button type='submit' disabled={!isValid} className={style.loginBtn}>
                         Log in
-                    </button></form>
+                    </button>
+                </form>
+
+                <div className={style.signupBox}>
+                    <span>Don’t have an account?</span>
+                    <Link className={style.signupLink} to={'/sign-up'}> Sign Up</Link>
+                </div>
+
             </div>
 
 

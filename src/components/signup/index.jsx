@@ -88,14 +88,9 @@ export const SignUp = () => {
         </form>
         <div className={style.signupBox}>
           <span>Already have an account?</span>
-          <a className={style.signupLink} href='/log-in'>Log in</a>
+          <a className={style.signupLink} href='/'>Log in</a>
         </div>
-
-
       </div>
-
-
-
     </div>
   )
 }
