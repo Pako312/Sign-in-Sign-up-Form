@@ -39,10 +39,10 @@ export const Login = () => {
                     <span className={style.orPart}>OR</span>
                     <div className={style.lineSec}></div>
                 </div>
-                <div className={style.emailBox}>
-                    <form onSubmit={handleSubmit(onSubmit)} className={style.emailBox}>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className={style.emailBox}>
                         <p className={style.inpText}>Email Address</p>
-                        <input placeholder="Enter your email" className={style.inpEmail}
+                        <input placeholder="Enter your email" className={`${style.inpEmail} ${errors.email ? style.red : ''}`}
                             id="username"
                             type="email"
                             required
@@ -52,56 +52,48 @@ export const Login = () => {
                                     value: 5,
                                     message: "Minimum 5 characters"
                                 }
-
-
                             })}
                         />
-                    </form>
-                    <div className={style.err}>{errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}</div>
-                </div>
-                <div className={style.emailBox}>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <p className={style.inpText}>Password</p>
-                        <input placeholder="Enter your password" className={style.inpEmail}
-                            id="username"
-                            type="password"
-                            {...register("password", {
-                                required: true,
-                                minLength: {
-                                    value: 8,
-                                    message: "Your password must be minimum 8 characters"
-                                }
-                            })}
-                        >
-
-
-                        </input>
-                    </form>
-                    <div className={style.err}>{errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}</div>
-                </div>
-                <div className={style.rememberBox}>
-                    <form className={style.formRemBox}>
-                        <input class="checkbox" id="checkbox-with-div" type="checkbox" />
-                        <label className={style.labelRemBox} for="checkbox-with-div">
-                            Remember me
-                        </label>
-                    </form>
-                    <span className={style.spanRemBox}>Forgot password?</span>
-                </div>
-                <form onSubmit={handleSubmit(onSubmit)} className={style.loginBox}>
-                    <button type='submit' disabled={!isValid} className={style.loginBtn}>
-                        Log in
-                    </button>
+                        <div className={style.err}>{errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}</div>
+                    </div>
+                    <div className={style.emailBox}>
+                        <div>
+                            <p className={style.inpText}>Password</p>
+                            <input placeholder="Enter your password" className={`${style.inpEmail} ${errors.password ? style.red : ''}`}
+                                id="username"
+                                type="password"
+                                {...register("password", {
+                                    required: true,
+                                    minLength: {
+                                        value: 8,
+                                        message: "Your password must be minimum 8 characters"
+                                    }
+                                })}
+                            >
+                            </input>
+                        </div>
+                        <div className={style.err}>{errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}</div>
+                    </div>
+                    <div className={style.rememberBox}>
+                        <div className={style.formRemBox}>
+                            <input class="checkbox" id="checkbox-with-div" type="checkbox"  />
+                            <label className={style.labelRemBox} for="checkbox-with-div">
+                                Remember me
+                            </label>
+                        </div>
+                        <span className={style.spanRemBox}>Forgot password?</span>
+                    </div>
+                    <div className={style.loginBox}>
+                        <button type='submit' disabled={!isValid} className={style.loginBtn}>
+                            Log in
+                        </button>
+                    </div>
                 </form>
-
                 <div className={style.signupBox}>
                     <span>Don’t have an account?</span>
                     <Link className={style.signupLink} to={'/sign-up'}> Sign Up</Link>
                 </div>
-
             </div>
-
-
-        </div>
+        </div >
     )
 }
