@@ -78,7 +78,7 @@ export const SignUp = () => {
               <input class="checkbox" id="checkbox-with-div" type="checkbox" />
               <label className={style.labelRemBox} for="checkbox-with-div">
                 I have read and agree to the 
-                <a href="#">Terms of Service</a>
+                <a class={style.alink} href="#">Terms of Service</a>
               </label>
             </div>
 
