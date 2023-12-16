@@ -57,6 +57,7 @@
     display: flex;
     align-items: center;
     gap: 17px;
+    margin-bottom: -17px;
 
     .lineFirst,
     .lineSec {
@@ -78,6 +79,8 @@
 }
 
 .emailBox {
+    margin-top: 17px;
+
     .inpText {
         color: var(--secondary-text-light, rgba(27, 43, 65, 0.72));
         font-family: Plus Jakarta Sans;
@@ -86,12 +89,8 @@
         font-weight: 500;
         line-height: normal;
 
+    }
 
-    }
-    .red {
-        border: 1px solid red!important;
-    }
-    
 
     .err {
         color: red;
@@ -104,15 +103,11 @@
 
     .inpEmail {
         color: var(--body-text-light, rgba(24, 39, 58, 0.94));
-        outline: none;
-
-        /* Input field */
         font-family: Plus Jakarta Sans;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
         line-height: 22px;
-        /* 157.143% */
         text-align: left;
         padding: 8px 14px;
         width: 336px;
@@ -120,21 +115,20 @@
         flex-shrink: 0;
         border-radius: 3px;
         border: 1px solid var(--contrast-20-light, rgba(28, 55, 90, 0.16));
-     
-    }   
+
+    }
 
 }
 
-input:focus {
-    border: 1px solid blue;
-}
-
-input:focus {
-    border: 1px solid red;
+input:hover:focus {
+    outline-color: #1676F3;
+    transition: all 500ms;
+    cursor: pointer;
 }
 
 
 .rememberBox {
+    margin-top: 17px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -220,8 +214,7 @@ input:focus {
     color: var(--primary-text-light, #1676F3);
 }
 
-// input:focus:required:invalid {
-//     border: 2px solid red;
-// }
-
-
+.red {
+    outline: none;
+    border: 1px solid red !important;
+}

@@ -57,26 +57,24 @@ export const Login = () => {
                         <div className={style.err}>{errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}</div>
                     </div>
                     <div className={style.emailBox}>
-                        <div>
-                            <p className={style.inpText}>Password</p>
-                            <input placeholder="Enter your password" className={`${style.inpEmail} ${errors.password ? style.red : ''}`}
-                                id="username"
-                                type="password"
-                                {...register("password", {
-                                    required: true,
-                                    minLength: {
-                                        value: 8,
-                                        message: "Your password must be minimum 8 characters"
-                                    }
-                                })}
-                            >
-                            </input>
-                        </div>
+                        <p className={style.inpText}>Password</p>
+                        <input placeholder="Enter your password" className={`${style.inpEmail} ${errors.password ? style.red : ''}`}
+                            id="username"
+                            type="password"
+                            {...register("password", {
+                                required: true,
+                                minLength: {
+                                    value: 8,
+                                    message: "Your password must be minimum 8 characters"
+                                }
+                            })}
+                        >
+                        </input>
                         <div className={style.err}>{errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}</div>
                     </div>
                     <div className={style.rememberBox}>
                         <div className={style.formRemBox}>
-                            <input class="checkbox" id="checkbox-with-div" type="checkbox"  />
+                            <input class="checkbox" id="checkbox-with-div" type="checkbox" />
                             <label className={style.labelRemBox} for="checkbox-with-div">
                                 Remember me
                             </label>

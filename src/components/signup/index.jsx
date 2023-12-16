@@ -11,9 +11,11 @@ import { Link } from 'react-router-dom'
 export const SignUp = () => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
-  } = useForm()
+  } = useForm({
+    mode:"onBlur"
+  })
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -39,26 +41,26 @@ export const SignUp = () => {
         </div>
         <form onSubmit={handleSubmit(onSubmit)} >
           <div className={style.emailBox}>
-            <div className={style.emailBox}>
-              <p className={style.inpText}>Full Name<p className={style.star}>*</p></p>
-              <input placeholder="Enter your name" className={style.inpEmail}
-                id="username"
-                type="text"
-                {...register("fullname", {
-                  required: "This field is mandatory",
-                  minLength: {
-                    value: 5,
-                    message: "Minimum 5 characters"
-                  }
-                })}
-              />
-            </div>
+
+            <p className={style.inpText}>Full Name<p className={style.star}>*</p></p>
+            <input placeholder="Enter your name" className={`${style.inpEmail} ${errors.fullname? style.red : ''}`}
+              id="username"
+              type="text"
+              {...register("fullname", {
+                required: "This field is mandatory",
+                minLength: {
+                  value: 5,
+                  message: "Minimum 5 characters"
+                }
+              })}
+            />
+
 
             <div className={style.err}>{errors?.fullname && <p>{errors?.fullname?.message || 'Error!'}</p>} </div>
           </div>
           <div className={style.emailBox}>
             <p className={style.inpText}>Email Address<p className={style.star}>*</p></p>
-            <input placeholder="Enter your email" className={style.inpEmail}
+            <input placeholder="Enter your email" className={`${style.inpEmail} ${errors.email ? style.red : ''}`}
               id="username"
               type="email"
               {...register("email", {
@@ -72,19 +74,52 @@ export const SignUp = () => {
             </input>
             <div className={style.err}>{errors?.email && <p>{errors?.email?.message || 'Error!'}</p>} </div>
           </div>
-          <InputsAntd />
+          <div className={style.emailBox}>
+            <p className={style.inpText}>Password<p className={style.star}>*</p></p>
+            <input placeholder="Enter your password" className={`${style.inpEmail} ${errors.password ? style.red : ''}`}
+              id="username"
+              type="password"
+              {...register("password", {
+                required: true,
+                minLength: {
+                  value: 8,
+                  message: "Your password must be minimum 8 characters"
+                }
+              })}
+            >
+            </input>
+            <div className={style.err}>{errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}</div>
+          </div>
+          <div className={style.emailBox}>
+            <p className={style.inpText}>Confirm Password<p className={style.star}>*</p></p>
+            <input placeholder="Enter your password" className={`${style.inpEmail} ${errors.ConfirmPassword ? style.red : ''}`}
+              id="username"
+              type="password"
+              {...register("ConfirmPassword", {
+                required: true,
+                minLength: {
+                  value: 8,
+                  message: "Your password must be minimum 8 characters"
+                }
+              })}
+            >
+            </input >
+            <div className={style.err}>{errors?.ConfirmPassword && <p>{errors?.ConfirmPassword?.message || 'Error!'}</p>}</div>
+          </div>
           <div className={style.rememberBox}>
             <div className={style.formRemBox}>
-              <input class="checkbox" id="checkbox-with-div" type="checkbox" />
+              <input class="checkbox" id="checkbox-with-div" type="checkbox"
+              className={`${style.inpEmail} ${errors.password ? style.red : ''}`}
+               />
               <label className={style.labelRemBox} for="checkbox-with-div">
-                I have read and agree to the 
+                I have read and agree to the
                 <a class={style.alink} href="#">Terms of Service</a>
               </label>
             </div>
 
           </div>
           <div className={style.loginBox}>
-            <button type='submit' className={style.loginBtn}>
+            <button type='submit' disabled={!isValid} className={style.loginBtn}>
               Get Started
             </button>
           </div>
