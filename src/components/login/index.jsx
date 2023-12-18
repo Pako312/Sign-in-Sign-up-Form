@@ -3,22 +3,28 @@ import Logo from '../assets/img/Logo3.png'
 import google from '../assets/img/google4.svg'
 import style from './style.module.scss'
 import { useForm } from 'react-hook-form'
-import Password from 'antd/es/input/Password'
 import { Link } from 'react-router-dom'
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export const Login = () => {
+    const schema = yup.object().shape({
+        Email: yup.string().email().required("The field must be filled"),
+        Password: yup.string().min(5).max(12).required('Your password must be at least 5 symbols')
+    })
     const {
         register,
-        formState: { errors, isValid },
         handleSubmit,
-        reset
-
+        formState: { errors, isValid },
     } = useForm({
-        mode: "onChange"
-    })
+        resolver: yupResolver(schema),
+        mode: "onBlur"
+       
+    });
+
     const onSubmit = (data) => {
         alert(JSON.stringify(data));
-        reset();
+      
     };
     return (
         <div>
@@ -42,35 +48,22 @@ export const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={style.emailBox}>
                         <p className={style.inpText}>Email Address</p>
-                        <input placeholder="Enter your email" className={`${style.inpEmail} ${errors.email ? style.red : ''}`}
+                        <input placeholder="Enter your email" className={`${style.inpEmail} ${errors.Email ? style.red : ''}`}
                             id="username"
                             type="email"
-                            required
-                            {...register("email", {
-                                required: "You must fill your email",
-                                minLength: {
-                                    value: 5,
-                                    message: "Minimum 5 characters"
-                                }
-                            })}
+                            {...register("Email")}
                         />
-                        <div className={style.err}>{errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}</div>
+                        <div className={style.err}>{errors?.Email && <p>{errors?.Email?.message || 'Error!'}</p>}</div>
                     </div>
                     <div className={style.emailBox}>
                         <p className={style.inpText}>Password</p>
-                        <input placeholder="Enter your password" className={`${style.inpEmail} ${errors.password ? style.red : ''}`}
+                        <input placeholder="Enter your password" className={`${style.inpEmail} ${errors.Password ? style.red : ''}`}
                             id="username"
                             type="password"
-                            {...register("password", {
-                                required: true,
-                                minLength: {
-                                    value: 8,
-                                    message: "Your password must be minimum 8 characters"
-                                }
-                            })}
+                            {...register("Password")}
                         >
                         </input>
-                        <div className={style.err}>{errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}</div>
+                        <div className={style.err}>{errors?.Password && <p>{errors?.Password?.message || 'Error!'}</p>}</div>
                     </div>
                     <div className={style.rememberBox}>
                         <div className={style.formRemBox}>
